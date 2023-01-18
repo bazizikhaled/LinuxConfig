@@ -1,3 +1,6 @@
+-- xmonad config used by Malcolm MD
+-- https://github.com/randomthought/xmonad-config
+
 import System.IO
 import System.Exit
 -- import System.Taffybar.Hooks.PagerHints (pagerHints)
@@ -282,12 +285,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn "amixer -q set Master toggle")
 
   -- Decrease volume.
-  , ((shiftMask, xK_u),
-     spawn "amixer -q set Master 5%-")
+  --, ((shiftMask, xK_u),   spawn "amixer -q set Master 5%-")
 
   -- Increase volume.
-  , ((shiftMask, xK_i),
-     spawn "amixer -q set Master 5%+")
+ -- , ((shiftMask, xK_i),spawn "amixer -q set Master 5%+")
 
   -- Audio previous.
   , ((0, 0x1008FF16),
@@ -318,7 +319,19 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((shiftMask, xK_m),
      spawn "caprine")
 
-  -- , ((shiftMask, xK_d), spawn "")
+  , ((shiftMask, xK_c),
+     spawn "alacritty -e cmus")
+
+  , ((shiftMask, xK_s),
+     spawn "pavucontrol")
+
+  , ((shiftMask, xK_n),
+     spawn "alacritty -e newsboat")
+
+  , ((shiftMask, xK_p),
+     spawn "alacritty -e nano /home/kh/kh/notes" )
+  , ((shiftMask, xK_i),
+     spawn "alacritty -e nano /home/kh/khD/down" )
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
@@ -498,9 +511,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook = do
   setWMName "LG3D"
   spawn     "xmodmap .xmodmap"
-  spawn     "redshift -O 2000"
+  spawn     "redshift -x && redshift -O 2000"
   spawn     " feh --bg-fill --randomize ~/.wallpaper/* & "
   spawn     "picom --config ~/.config/picom/picom.conf"
+  spawn     "sudo timekpra"
   setDefaultCursor xC_left_ptr
 
 
