@@ -63,7 +63,7 @@ myScreenshot = "xfce4-screenshooter"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
-myLauncher = "rofi -show"
+myLauncher = "dmenu"
 
 
 ------------------------------------------------------------------------
@@ -285,10 +285,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn "amixer -q set Master toggle")
 
   -- Decrease volume.
-  --, ((shiftMask, xK_u),   spawn "amixer -q set Master 5%-")
+  --, ((shiftMask, xK_),   spawn "pactl -- set-sink-volume 0 +10%")
 
   -- Increase volume.
- -- , ((shiftMask, xK_i),spawn "amixer -q set Master 5%+")
+  --, ((shiftMask, xK_2),spawn "pactl -- set-sink-volume 0 -10%")
 
   -- Audio previous.
   , ((0, 0x1008FF16),
@@ -320,7 +320,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn "caprine")
 
   , ((shiftMask, xK_c),
-     spawn "alacritty -e cmus")
+     spawn "")
 
   , ((shiftMask, xK_s),
      spawn "pavucontrol")
@@ -329,9 +329,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn "alacritty -e newsboat")
 
   , ((shiftMask, xK_p),
-     spawn "alacritty -e nano /home/kh/kh/notes" )
+     spawn "gnome-system-monitor" )
   , ((shiftMask, xK_i),
-     spawn "alacritty -e nano /home/kh/khD/down" )
+     spawn "chat-gpt" )
+
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
